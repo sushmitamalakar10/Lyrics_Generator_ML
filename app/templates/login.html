@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register | Lyrics Generator</title>
+    <title>Login | Lyrics Generator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -10,7 +10,7 @@
 <div class="form-wrapper">
     <div class="form-title">Lyrics Generator - Register</div>
 
-    <form action= '/register' method="POST">
+    <form action= '/login' method="POST">
         {{ form.hidden_tag() }}
 
         <div class="form-group">
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-footer">
-            <small>Already have an account? <a href="{{ url_for('login') }}">Login</a></small>
+            <small>Do not have an account? <a href="{{ url_for('main.register') }}">Register</a></small>
         </div>
     </form>
 </div>
