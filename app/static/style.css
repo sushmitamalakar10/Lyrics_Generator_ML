@@ -1,12 +1,45 @@
-/* General layout */
+/* ===== General Layout ===== */
 body {
     margin: 0;
     padding: 0;
     background: linear-gradient(to right, #6a11cb, #2575fc);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
 }
 
-/* Form container */
+/* ===== Common Buttons ===== */
+.submit-button{
+    background-color: #2575fc;
+    color: white;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.logout-button {
+    background-color: #2575fc;
+    color: white;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: auto;
+}
+
+.submit-button:hover,
+.logout-button:hover {
+    background-color: #1a5edb;
+}
+
+/* ===== Form Wrapper (Login/Register Pages) ===== */
 .form-wrapper {
     max-width: 400px;
     margin: 100px auto;
@@ -16,7 +49,6 @@ body {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Titles and labels */
 .form-title {
     text-align: center;
     margin-bottom: 20px;
@@ -31,41 +63,33 @@ body {
     font-weight: 600;
 }
 
-/* Form inputs */
-.input-field {
+.input-field,
+.form-control {
     width: 100%;
-    padding: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    font-size: 14px;
     box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.3s;
 }
 
-/* Error messages */
-.error-message {
+.input-field:focus,
+.form-control:focus {
+    border-color: #2575fc;
+    outline: none;
+}
+
+/* ===== Error Messages ===== */
+.error-message,
+.error {
     color: red;
     font-size: 13px;
     margin-top: 5px;
 }
 
-/* Buttons */
-.submit-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #2575fc;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.submit-button:hover {
-    background-color: #1a5edb;
-}
-
-/* Footer link */
+/* ===== Footer Link on Forms ===== */
 .form-footer {
     text-align: center;
     margin-top: 1rem;
@@ -79,4 +103,151 @@ body {
 
 .form-footer a:hover {
     text-decoration: underline;
+}
+
+/* ===== Dashboard Wrapper ===== */
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* ===== Top Navbar ===== */
+.top-navbar {
+    background-color: #2d2dff;
+    color: white;
+    padding: 15px 25px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== Dashboard Content Layout ===== */
+.dashboard-content {
+    display: flex;
+    flex: 1;
+    height: 100%;
+}
+
+/* ===== Sidebar (Lyrics History) ===== */
+.sidebar {
+    width: 320px;
+    background-color: #f0f3ff;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    color: #2575fc;
+}
+
+.welcome {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.lyrics-history {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+    flex-grow: 1;
+}
+
+.history-item {
+    background-color: #e6ebff;
+    padding: 15px 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.empty-message {
+    font-style: italic;
+    color: #777;
+}
+
+/* ===== Main Dashboard Area ===== */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    background-color: #f9f9f9;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+/* ===== Generate Lyrics Section ===== */
+.generate-section {
+    background-color: white;
+    padding: 30px 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 500px;
+}
+
+.generate-section h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #2575fc;
+}
+
+.generate-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* ===== Generated Lyrics Section ===== */
+.lyrics-output {
+    background-color: white;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+    width: 100%;
+    min-height: 280px;
+}
+
+.lyrics-output h2 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #2575fc;
+    margin-bottom: 20px;
+}
+
+.lyrics-box {
+    white-space: pre-wrap;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444;
+    background-color: #f5f7ff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }

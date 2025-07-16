@@ -1,1 +1,102 @@
-Dashboard
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dashboard | Lyrics Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+
+    <!-- Top Navbar -->
+    <header class="top-navbar">
+        <div class="brand-title">Lyrics Generator</div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="dashboard-content">
+
+        <!-- Sidebar History -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>History</h2>
+                <p class="welcome">Welcome, {{ email }}</p>
+            </div>
+
+            {% if history %}
+                <ul class="lyrics-history">
+                    {% for item in history %}
+                        <li class="history-item">
+                            <div><strong>Prompt:</strong> {{ item.prompt }}</div>
+                            <div><strong>Lyrics:</strong> {{ item.lyrics }}</div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="empty-message">No lyrics generated yet.</p>
+            {% endif %}
+
+            <a href="{{ url_for('main.logout') }}" class="logout-button">Logout</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <section class="generate-section">
+                <h2>Generate New Lyrics</h2>
+
+                <form method="POST" action="{{ url_for('main.dashboard') }}" class="generate-form" novalidate>
+                    {{ form.hidden_tag() }}
+
+                    <!-- Prompt -->
+                    <div class="form-group">
+                        <label for="prompt">{{ form.prompt.label }}</label>
+                        {{ form.prompt(rows=4, id="prompt", class_="form-control") }}
+                        {% for error in form.prompt.errors %}
+                            <div class="error">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Length -->
+                    <div class="form-group">
+                        <label for="length">{{ form.length.label }}</label>
+                        {{ form.length(id="length", class_="form-control") }}
+                        {% for error in form.length.errors %}
+                            <div class="error">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Genre -->
+                    <div class="form-group">
+                        <label for="genre">{{ form.genre.label }}</label>
+                        {{ form.genre(id="genre", class_="form-control") }}
+                        {% for error in form.genre.errors %}
+                            <div class="error">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="form-group">
+                        {{ form.submit(class="submit-button") }}
+                    </div>
+                </form>
+            </section>
+
+            <!-- Generated Lyrics Output -->
+            <section class="lyrics-output">
+                <h2>Generated Lyrics</h2>
+                <div class="lyrics-box">
+                    {% if generated_lyrics %}
+                        {{ generated_lyrics }}
+                    {% else %}
+                        <em>Your generated lyrics will appear here...</em>
+                    {% endif %}
+                </div>
+            </section>
+        </main>
+
+    </div>
+</div>
+
+</body>
+</html>
